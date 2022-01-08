@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContatoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+Route::get('/', [ContatoController::class, 'index']);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('contatos')->group(function () {
+    Route::get('/', [ContatoController::class, 'index']);
+    Route::get('/add', [ContatoController::class, 'create']);
+    Route::post('/', [ContatoController::class, 'store']);
+    Route::get('/{id}', [ContatoController::class, 'show']);
+    Route::get('/edit/{id}', [ContatoController::class, 'edit']);
+    Route::put('/{id}', [ContatoController::class, 'update']);
+    Route::delete('/{id}', [ContatoController::class, 'destroy']);
+});

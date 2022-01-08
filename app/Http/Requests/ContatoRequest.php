@@ -24,25 +24,25 @@ class ContatoRequest extends FormRequest
     public function rules()
     {
         switch ($this->method()) {
-            case "POST": // CREATING A NEW REGISTER
+            case "POST": //criaçao de uma novo registro
                 return [
                     'nome' => 'required|max:100',
-                    'email' => 'email|max:200|unique:contatos',
+                    'email' => 'required|max:100|unique:contatos',
+                    'telefone' => 'required|max:15',
+                    'data_nascimento' => 'date_format:"d/m/Y"',
                     'cpf' => 'required|min:11|max:11|unique:contatos',
-                    'telefone' => 'required|max15',
-                    'data_nascimento' => 'date_format: "d/m/Y"',
-                    'avatar' => 'nullable|sometimes|image|mimes:png,jpg,jpeg,gif',
+                    'avatar' => 'nullable|sometimes|image|mimes:jpg,jpeg,png,gif',
                 ];
                 break;
 
-            case "PUT": // UPDATING A EXISTENT REGISTER
+            case "PUT": //atualização de um registro existente
                 return [
                     'nome' => 'required|max:100',
-                    'email' => 'email|max:200|unique:contatos, email,' . $this->id,
-                    'cpf' => 'nullable|min:11|max:11|unique:contatos, cpf,' . $this->id,
-                    'telefone' => 'required|max15',
-                    'data_nascimento' => 'date_format: "d/m/Y"',
-                    'avatar' => 'nullable|sometimes|image|mimes:png,jpg,jpeg,gif',
+                    'email' => 'required|max:100|unique:contatos,email,' . $this->id,
+                    'telefone' => 'required|max:15',
+                    'data_nascimento' => 'date_format:"d/m/Y"',
+                    'cpf' => 'nullable|min:11|max:11|unique:contatos,cpf,' . $this->id,
+                    'avatar' => 'nullable|sometimes|image|mimes:jpg,jpeg,png,gif',
                 ];
                 break;
 
@@ -50,13 +50,14 @@ class ContatoRequest extends FormRequest
                 break;
         }
     }
+
     public function messages()
     {
         return [
             'nome.required' => 'O campo nome é obrigatório',
-            'email.email' => 'Informe um e-mail válido',
+            'email.required' => 'Informe um e-mail válido',
+            'data_nascimento.date_format' => 'O campo data deve ser no formato DD/MM/AAAA',
             'cpf' => 'Informe apenas os números do CPF',
-            'data_nascimento' => 'O campo data deve ser no formato DD/MM/YYYY',
         ];
     }
 }

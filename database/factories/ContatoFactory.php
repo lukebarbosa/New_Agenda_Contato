@@ -19,7 +19,7 @@ class ContatoFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'cpf' => $faker->cpf(false),
             'telefone' => $faker->cellphoneNumber,
-            'data_nascimento' => $this->faker->date('Y-m-d'),
+            'data_nascimento' => $this->faker->date('d-m-Y'),
         ];
     }
 }

@@ -80,6 +80,6 @@
             @yield('content')
         </main>
     </div>
-    @stack('javacript')
+    @stack('javascript')
 </body>
 </html>
