@@ -51,16 +51,22 @@ cp .env.example .env
 
 ```terminal
 php artisan key:generate
+```
+
+7. Create a storage link
+
+```terminal
+php artisan storage:link
 ```    
 
-7. Run the migrations on terminal
+8. Run the migrations on terminal
 
 ```terminal
 php artisan migrate
 (optional) php artisan migrate --seed
 ```
 
-8. Run the application
+9. Run the application
 
 ```terminal
 php artisan serve
