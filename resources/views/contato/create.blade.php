@@ -12,7 +12,7 @@
 
                         <div class="form-group">
                             <label for="nome">Nome completo</label>
-                            <input type="text" required class="form-control{{$errors->has('nome') ? ' is-invalid':''}}" value="{{ old('nome') }}" id="nome" name="nome">
+                            <input type="text" required class="form-control{{$errors->has('nome') ? ' is-invalid':''}}" value="{{ old('nome') }}" id="nome" name="nome" placeholder="nome">
                             <div class="invalid-feedback">{{ $errors->first('nome') }}</div>
                         </div>
                         <div class="form-group">
@@ -27,7 +27,7 @@
                         </div>
                         <div class="form-group">
                             <label for="telefone">Telefone</label>
-                            <input type="text" required class="form-control{{$errors->has('telefone') ? ' is-invalid':''}}" value="{{ old('telefone') }}" id="telefone" name="telefone">
+                            <input type="text" required class="form-control{{$errors->has('telefone') ? ' is-invalid':''}}" value="{{ old('telefone') }}" id="telefone" name="telefone" placeholder="(00) 00000-0000">
                             <div class="invalid-feedback">{{ $errors->first('telefone') }}</div>
                         </div>
                         <div class="form-group">
